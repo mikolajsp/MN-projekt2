@@ -1,4 +1,4 @@
-function [Ar] = gepp(A,b)
+function [Ap, bp] = gepp(A,b)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -16,7 +16,7 @@ Ar = [A, b];
 
 for i = 1:n
     %znajdowanie maksymalnego elementu w wierszu 
-    [maksimum, indeks] = max(abs(Ar([i n],i)));
+    [maksimum, indeks] = max(abs(Ar(i:n,i)));
     indeks = indeks+i-1;
     
     %zamiana wierszy
@@ -30,6 +30,10 @@ for i = 1:n
     
     
 end
+
+
+bp = Ar(:, n+1);
+Ap = Ar(1:n, 1:n);
 
 
 
