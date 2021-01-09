@@ -32,10 +32,16 @@ for i = 1:n
     
     %wyzerowanie wierszy pod przekatna
     for j = (i+1):n
-       Ar(j,:) = Ar(j,:) - Ar(j, i)/Ar(i, i) * Ar(i, :);
+       % w tym miejscu sprawdzam, czy układ ma jednoznaczne rozwiązanie
+       if Ar(i,i) ~= 0 
+           Ar(j,:) = Ar(j,:) - Ar(j, i)/Ar(i, i) * Ar(i, :);
+       else
+           error("Układ nie ma jednoznacznego rozwiązania lub jest sprzeczny")
+       end
     end
        
 end
+
 
 % podzielenie układu macierzy rozszerzonej układu na macierz współczynników
 % i wektor wyrazów wolnych
